@@ -1,21 +1,20 @@
 <?php
 /**
- *	This program is free software: you can redistribute it and/or modify
- *	it under the terms of the GNU General Public License as published by
- *	the Free Software Foundation, either version 3 of the License, or
- *	(at your option) any later version.
- *
- *	This program is distributed in the hope that it will be useful,
- *	but WITHOUT ANY WARRANTY; without even the implied warranty of
- *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *	GNU General Public License for more details.
- *
- *	You should have received a copy of the GNU General Public License
- *	along with this program.  If not, see <http://www.gnu.org/licenses/>
- *
- *
  * @author Oscar Casajuana a.k.a. elboletaire <elboletaire {at} underave {dot} net>  
+ */
+/*
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
 
 class Crawler
@@ -110,9 +109,17 @@ class Crawler
 			{
 				$parts = parse_url($url);
 				$new_href = $this->buildUrlFromParts($parts);
-				$new_href .= $path;			}
+				$new_href .= $path;
+			}
 			// Relative urls... (like ./viewforum.php)
-			if (0 === strpos($href, './') && !empty($parts['path']))			{				// If the path isn't really a path (doesn't end with slash)...				if (!preg_match('@/$@', $parts['path'])) {					$path_parts = explode('/', $parts['path']);					array_pop($path_parts);					$parts['path'] = implode('/', $path_parts) . '/';				}
+			if (0 === strpos($href, './') && !empty($parts['path']))
+			{
+				// If the path isn't really a path (doesn't end with slash)...
+				if (!preg_match('@/$@', $parts['path'])) {
+					$path_parts = explode('/', $parts['path']);
+					array_pop($path_parts);
+					$parts['path'] = implode('/', $path_parts) . '/';
+				}
 
 				$new_href = $this->buildUrlFromParts($parts) . $parts['path'] . ltrim($href, './');
 			}
