@@ -52,7 +52,7 @@ class Crawler
 	public function crawl()
 	{
 		if (empty($this->url)) {
-			throw new Exception('URL must be set');
+			throw new \Exception('URL must be set');
 		}
 		$this->_crawl($this->url, $this->depth);
 		return $this->results;
@@ -74,7 +74,7 @@ class Crawler
 
 		$seen[$url] = true;
 
-		$dom = new DOMDocument('1.0');
+		$dom = new \DOMDocument('1.0');
 		@$dom->loadHTMLFile($url);
 
 		$this->results[] = array(
