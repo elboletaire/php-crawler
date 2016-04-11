@@ -1,0 +1,18 @@
+{
+    "name": "elboletaire/crawler",
+    "description": "A simple crawler (spider) writen in php just for fun",
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Òscar Casajuana",
+            "email": "elboletaire@underave.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Elboletaire\\Crawler\\": "."
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}

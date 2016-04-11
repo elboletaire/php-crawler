@@ -1,7 +1,9 @@
 <?php
 /**
- * @author Oscar Casajuana a.k.a. elboletaire <elboletaire {at} underave {dot} net>  
+ * @author Oscar Casajuana a.k.a. elboletaire <elboletaire {at} underave {dot} net>
  */
+namespace Elboletaire\Crawler;
+
 /*
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
