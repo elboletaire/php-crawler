@@ -1,23 +1,36 @@
-#About
+About
+=====
+
 A simple crawler (spider) writen in PHP.
 
-#Usage
+Installation
+============
+
+~~~bash
+composer require elboletaire/crawler:dev-master
+~~~
+
+Usage
+=====
 
 ```php
 <?php
-include_once "Crawler.class.php";
+// require 'vendor/autoload.php';
 
-try
-{
+use Elboletaire\Crawler\Crawler;
+
+try {
 	$crawler = new Crawler('http://www.underave.net', 3, true);
 	print_r($crawler->crawl());
-}
-catch (Exception $e)
-{
+} catch (Exception $e) {
 	die($e->getMessage());
 }
 
 ```
 
-## License
+License
+=======
+
+Author: Òscar Casajuana
+
 http://www.gnu.org/copyleft/gpl.html

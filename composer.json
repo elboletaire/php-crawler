@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Elboletaire\\Crawler\\": "."
+            "Elboletaire\\Crawler\\": "src"
         }
     },
     "minimum-stability": "dev",
