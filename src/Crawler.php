@@ -96,6 +96,8 @@ class Crawler
 
 	private function buildUrl($url, $href)
 	{
+		$url = trim($url);
+		$href = trim($href);
 		if (0 !== strpos($href, 'http'))
 		{
 			if (0 === strpos($href, 'javascript:') || 0 === strpos($href, '#'))
@@ -127,7 +129,6 @@ class Crawler
 			}
 			$href = $new_href;
 		}
-		$href = rtrim($href, '/');
 		if ($this->same_host && $this->host != $this->getHostFromUrl($href)) {
 			return false;
 		}
