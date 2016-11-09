@@ -13,6 +13,17 @@
             "Elboletaire\\Crawler\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Elboletaire\\Crawler\\Test\\": "tests"
+        }
+    },
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "ext-dom": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.8",
+        "squizlabs/php_codesniffer": "^2.6"
+    }
 }

@@ -1,5 +1,6 @@
-# Mac crap
-.DS_Store
-
 # Vendors
 /vendor
+/composer.lock
+
+# Testing
+/build/

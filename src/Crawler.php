@@ -1,6 +1,6 @@
 <?php
 /**
- * @author Oscar Casajuana a.k.a. elboletaire <elboletaire {at} underave {dot} net>
+ * @author Òscar Casajuana a.k.a. elboletaire <elboletaire {at} underave {dot} net>
  */
 namespace Elboletaire\Crawler;
 
@@ -21,11 +21,11 @@ namespace Elboletaire\Crawler;
 
 class Crawler
 {
-	private $depth = 2;
-	private $url;
-	private $results = array();
-	private $same_host = false;
-	private $host;
+	protected $depth = 2;
+	protected $url;
+	protected $results = [];
+	protected $same_host = true;
+	protected $host;
 
 	public function setDepth($depth) { $this->depth = $depth; }
 	public function setHost($host) { $this->host = $host; }
