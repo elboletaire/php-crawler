@@ -55,6 +55,12 @@ class Crawler
 			throw new \Exception('URL must be set');
 		}
 		$this->_crawl($this->url, $this->depth);
+		
+		// sort links alphabetically
+		usort($this->results, function($a, $b) {
+			if ($a['url'] == $b['url']) return 0;
+			return (strtolower($a['url']) > strtolower($b['url'])) ? 1 : -1;
+		});
 		return $this->results;
 	}
 
@@ -68,19 +74,21 @@ class Crawler
 			return;
 		}
 
-		if ($depth === 0 || isset($seen[$url])) {
+		if ($depth === 0 || isset($this->results[$url])) {
 			return;
 		}
-
-		$seen[$url] = true;
 
 		$dom = new \DOMDocument('1.0');
 		@$dom->loadHTMLFile($url);
 
-		$this->results[] = array(
+		$this->results[$url] = array(
 			'url' => $url,
+			'depth' => $depth,
 			// 'content' => $dom->saveHTML()
 		);
+		
+		// saving links to find difference later
+		$crawled = $seen;
 
 		$anchors = $dom->getElementsByTagName('a');
 		foreach ($anchors as $element)
@@ -88,7 +96,19 @@ class Crawler
 			if (!$href = $this->buildUrl($url, $element->getAttribute('href'))) {
 				continue;
 			}
-			$this->_crawl($href, $depth - 1);
+			
+			if (!in_array($href, $seen)) {
+				$seen[] = $href;
+			}
+		}
+		
+		// set array difference from links already marked to crawl
+		$crawl = array_diff($seen, $crawled);
+			
+		// check if there are links to crawl
+		if (!empty($crawl)) {
+			// crawl links
+			array_map(array($this, '_crawl'), $crawl, array_fill(0, count($crawl), $depth - 1));
 		}
 
 		return $url;
