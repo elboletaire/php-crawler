@@ -38,6 +38,17 @@ class Crawler
 		$this->setHost($this->getHostFromUrl($url));
 	}
 
+    /**
+     * Retrieves the HTML of the specified uri.
+     *
+     * @param  Uri $uri Uri to be retrieved.
+     * @return string
+     */
+    public function retrieveHtml($uri)
+    {
+        return file_get_contents($uri);
+    }
+
 	public function __construct($url = null, $depth = null, $same_host = false)
 	{
 		if (!empty($url)) {
